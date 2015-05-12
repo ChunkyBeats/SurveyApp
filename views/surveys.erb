@@ -1,0 +1,20 @@
+<h3>Here are all of the Surveys available:</h3>
+
+<% if @surveys.any?() %>
+<ul><% @surveys.each do |survey| %>
+  <li><a href="/surveys/<%= survey.id %>"><%= survey.survey_name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>There are currently no surveys available.  Best make some, son!</p>
+<% end %>
+
+<form action="/surveys/add" method="post">
+  <div class="form-group">
+    <label for="survey_name">Survey Name:</label>
+    <input class="form-control" type="text" name="survey_name" id="survey_name">
+  </div>
+  <p>
+    <button type="submit" class="btn btn-success">Add</button>
+  </p>
+</form>
